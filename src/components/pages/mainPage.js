@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 
 const MainPage = observer(({store}) => {
     
-    useState(() => {
+    useEffect(() => {
         store.fetchData();  
     }, [store.valute]);
     console.log(toJS(store.valute));

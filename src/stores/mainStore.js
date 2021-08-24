@@ -40,12 +40,14 @@ export default class Store {
     fetchData() {
         this.currencyService.getResourses()
             .then(item => {
-                this.valute.EUR = item.Valute.EUR.Value;
-                this.valute.USD = item.Valute.USD.Value;
-                this.valute.UAH = item.Valute.UAH.Value;
-                this.valute.GBP = item.Valute.GBP.Value;
-                this.valute.BYN = item.Valute.BYN.Value;
-                this.valute.TRY = item.Valute.TRY.Value;                
+                runInAction(() => {
+                    this.valute.EUR = item.Valute.EUR.Value;
+                    this.valute.USD = item.Valute.USD.Value;
+                    this.valute.UAH = item.Valute.UAH.Value;
+                    this.valute.GBP = item.Valute.GBP.Value;
+                    this.valute.BYN = item.Valute.BYN.Value;
+                    this.valute.TRY = item.Valute.TRY.Value; 
+                })               
             })
             .catch(error => console.log(error));
     }
