@@ -1,6 +1,7 @@
-import { toJS } from 'mobx';
-import { inject, observer } from 'mobx-react';
 import React, { useEffect, useState } from 'react';
+import { inject, observer } from 'mobx-react';
+import { toJS } from 'mobx';
+
 
 const MainPage = observer(({store}) => {
     
@@ -8,11 +9,16 @@ const MainPage = observer(({store}) => {
         store.fetchData();  
     }, [store.valute]);
     console.log(toJS(store.valute));
+
     return (
-        <>
-            <input className='input-group' onChange={store.getValue}></input>
-            <div>{store.currency}</div>
-        </>
+        <div className='card d-block'>  
+        <div className='input-group' style={{margin: '30px'}}>
+            <input className='form-control' onChange={store.getValue}></input>
+            <div className="input-group-append">
+                <span className="input-group-text h-100 text-center" style={{width: '250px'}}>{store.currency}</span>
+            </div>
+        </div>
+        </div>
     )
 });
 

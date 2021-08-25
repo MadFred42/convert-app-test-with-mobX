@@ -3,16 +3,8 @@ import CurrencyService from '../serivce/convertCurrencyServ';
 
 export default class Store {
     currencyService = new CurrencyService();
-    value = ''; '// 15 usd to rub'
-    valute = {
-        RUB: 1,
-        EUR: '',
-        USD: '',
-        UAH: '',
-        GBP: '',
-        BYN: '',
-        TRY: ''
-    };
+    value = '';
+    valute = [];
     currency = '';
 
     getValue(e) {
@@ -41,12 +33,7 @@ export default class Store {
         this.currencyService.getResourses()
             .then(item => {
                 runInAction(() => {
-                    this.valute.EUR = item.Valute.EUR.Value;
-                    this.valute.USD = item.Valute.USD.Value;
-                    this.valute.UAH = item.Valute.UAH.Value;
-                    this.valute.GBP = item.Valute.GBP.Value;
-                    this.valute.BYN = item.Valute.BYN.Value;
-                    this.valute.TRY = item.Valute.TRY.Value; 
+                    this.valute.push(...Object.values(item.Valute));
                 })               
             })
             .catch(error => console.log(error));
