@@ -1,12 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export const Buttons = ({history}) => {
-
-    console.log(history);
+export const Buttons = () => {
 
     return (
-        <div className='d-flex justify-content-center btn-group' >
+        <div className='d-flex justify-content-center' >
             <Link to='/'>
                 <button className='btn btn-outline-primary'>Converter</button>
             </Link>   

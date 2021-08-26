@@ -1,16 +1,13 @@
 import React from 'react';
-import { inject, observer } from 'mobx-react';
-import { toJS } from 'mobx';
+import CurrencyValueList from '../currencyValueList';
 
-const ExchangePage = observer(({store}) => {
+const ExchangePage = () => {
 
-    function renderItems(obj) {
-        
-    }
-    
     return (
-        <div>Hello</div>
+        <div>
+            <CurrencyValueList/>
+        </div>
     )
-});
+};
 
-export default inject('store')(ExchangePage);
+export default ExchangePage;

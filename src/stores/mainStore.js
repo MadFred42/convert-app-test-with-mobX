@@ -4,7 +4,9 @@ import CurrencyService from '../serivce/convertCurrencyServ';
 export default class Store {
     currencyService = new CurrencyService();
     value = '';
-    valute = [];
+    valute = [
+        {CharCode: "RUB", ID: "R01", Name: "Рубль", Nominal: 1, NumCode: "1", Value: 1}
+    ];
     currency = '';
 
     getValue(e) {
@@ -12,21 +14,38 @@ export default class Store {
         if (this.value.length === 0) {
             return
         }
-        const num = this.value.match(/\d*/)[0];
-        const convertibleValutes = this.value.match(/\s+([^\s]*)/);
-        const convertingValutes = this.value.match(/\s+(\S+)$/)
+        const numToConvert = this.value.match(/\d*/)[0];
+        const convertibleValutesName = this.value.match(/\s+([^\s]*)/);
+        const convertingValutesName = this.value.match(/\s+(\S+)$/);
 
-        if (convertibleValutes === null || convertingValutes === null) {
+        const valute = toJS(this.valute);
+
+        const convertibleValutesValue = valute.find(item => {
+            if (convertibleValutesName === null) {
+                return null;
+            }
+
+            return item.CharCode === convertibleValutesName[1].toUpperCase();
+        })
+
+        const convertingValutesValue = valute.find(item => {
+            if (convertingValutesName === null) {
+                return null;
+            }
+
+            return item.CharCode === convertingValutesName[1].toUpperCase();
+        })
+        
+        if (!convertibleValutesValue || !convertingValutesValue) {
             return
         }
-        const valute = toJS(this.valute);
-        const convrtblValute = valute[convertibleValutes[1].toUpperCase()];
-        const convrtngValute = convertibleValutes.length !== 0 ? valute[convertingValutes[1].toUpperCase()] : null;
-        const currency = `${((convrtblValute / convrtngValute) * num).toFixed(2)} ${convertibleValutes.length !== 0 ? convertingValutes[1] : null}`;
 
-        
+        const currency = ((convertibleValutesValue.Value / convertingValutesValue.Value) * numToConvert).toFixed(2);
 
         this.currency = currency;
+        if (this.value.length === 0) {
+            this.currency = '';
+        }
     }
 
     fetchData() {
