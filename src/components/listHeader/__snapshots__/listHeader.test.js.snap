@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing <ListHeader/> ListHeader props 1`] = `
+<ul
+  className="row"
+>
+  <li
+    className="col list-group-item some"
+  >
+    <h5>
+      Наименование валюты
+    </h5>
+  </li>
+  <li
+    className="col list-group-item"
+  >
+    <h5>
+      Актуальный курс*
+    </h5>
+  </li>
+  <li
+    className="col list-group-item"
+  >
+    <h5>
+      Вчерашний курс*
+    </h5>
+  </li>
+  <li
+    className="col list-group-item"
+  >
+    <h5>
+      Разница
+    </h5>
+  </li>
+  <li
+    className="col list-group-item"
+  >
+    <h5>
+      Код валюты
+    </h5>
+  </li>
+</ul>
+`;

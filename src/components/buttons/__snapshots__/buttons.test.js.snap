@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing <Buttons/> Buttons have rendered correctly 1`] = `
+<div
+  className="d-flex justify-content-center"
+>
+  <Link
+    to="/"
+  >
+    <button
+      className="btn btn-outline-primary"
+    >
+      Converter
+    </button>
+  </Link>
+  <Link
+    to="/currency"
+  >
+    <button
+      className="btn btn-outline-primary"
+    >
+      Exchange rates
+    </button>
+  </Link>
+</div>
+`;
